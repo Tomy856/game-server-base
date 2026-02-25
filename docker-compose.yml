@@ -6,6 +6,8 @@ services:
       dockerfile: docker/Dockerfile
     ports:
       - "8080:8080"
+    volumes:
+      - .:/workspaces/game-server-base:cached
     depends_on:
       - db
       - redis
