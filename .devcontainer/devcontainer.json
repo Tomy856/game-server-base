@@ -1,0 +1,7 @@
+{
+    "name": "Game Server",
+    "dockerComposeFile": ["../docker-compose.yml"],
+    "service": "app",
+    "workspaceFolder": "/go/src/app",
+    "remoteUser": "root"
+}
