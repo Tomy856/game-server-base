@@ -35,7 +35,7 @@ func main() {
 		mcErr := mc.Ping()
 
 		// 判定と結果送信
-		status := "success"
+		status := "success!!"
 		dbStatus := "OK"
 		redisStatus := "OK"
 		mcStatus := "OK"

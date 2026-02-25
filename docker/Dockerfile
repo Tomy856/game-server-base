@@ -1,15 +1,12 @@
-# 1. 標準的なOS（Debian）を使用。これだけでVSCodeは動きます
-FROM golang:1.21-bookworm
+FROM golang:1.26-alpine
 
-# 2. 作業ディレクトリの設定
+RUN apk add --no-cache git
+
 WORKDIR /app
 
-# 3. ファイルのコピー
 COPY . .
 
-# 4. ビルド処理
 RUN go mod tidy && \
     go build -o main .
 
-# 5. 実行
 CMD ["./main"]
