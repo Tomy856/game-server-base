@@ -1,26 +1,25 @@
 @echo off
-@rem 文字化け防止
 chcp 65001 >nul
 setlocal
 cd /d %~dp0..
 
-echo ==========================================
-echo [1/3] 古いサーバー情報をクリアしています...
-docker stop game-api >nul 2>&1
-docker rm game-api >nul 2>&1
+echo "=========================================="
+echo "      ゲーム環境（サーバー+DB）起動"
+echo "=========================================="
 
-echo [2/3] 最新のプログラムを読み込んでいます...
-docker build -f docker/Dockerfile -t my-game-server .
+echo "[1/2] 以前の環境を掃除しています..."
+docker compose down >nul 2>&1
 
-echo [3/3] サーバーを起動しています...
-docker run -d -p 8080:8080 --name game-api my-game-server
+echo "[2/2] 全てのサービスを起動中..."
+echo "※ 初回は各データベースのダウンロードに時間がかかります。"
+docker compose up -d --build
 
 echo.
-echo ==========================================
-echo 完了しました！
-echo.
-echo ブラウザで以下のURLを開いてください:
-echo http://localhost:8080
-echo ==========================================
-echo.
+echo "------------------------------------------"
+echo "✅ 起動成功！"
+echo "・API: http://localhost:8080"
+echo "・Postgres: localhost:5432"
+echo "・Redis: localhost:6379"
+echo "・Memcached: localhost:11211"
+echo "------------------------------------------"
 pause
