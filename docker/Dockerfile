@@ -13,7 +13,7 @@ RUN go mod tidy && \
 # Runtime stage
 FROM alpine:3.23
 
-RUN apk add --no-cache ca-certificates
+RUN apk add --no-cache ca-certificates git
 
 WORKDIR /app
 
