@@ -90,7 +90,30 @@ game-server-base/
 
 詳細は [アーキテクチャ](docs/ARCHITECTURE.md) を参照。
 
-## 🔧 主な技術スタック
+## � 動作環境
+
+### 非サーバープログラマー向け
+1. Rancher Desktop をインストール
+2. Windows にこの Git リポジトリをクローン
+3. `tools/start.bat` でサーバーを起動
+4. ブラウザで `http://127.0.0.1:8080` にアクセスして動作確認
+5. 終了時は `tools/stop.bat` でサーバーを停止
+
+### サーバープログラマー向け
+1. VSCode をインストール
+2. Rancher Desktop をインストール
+3. 管理者権限で PowerShell を開く
+4. `wsl --install -d Ubuntu` で Ubuntu をインストール
+5. Ubuntu を起動し、ユーザー名とパスワードを適当に決める
+6. Ubuntu 内で適当なフォルダを作成し、この Git リポジトリをクローン
+7. Rancher Desktop の Preferences > **WSL** を開く
+8. 先ほどインストールした「Ubuntu」がリストに出現するのでチェックを入れる
+9. [Apply] ボタンをクリック。これにより Ubuntu 内で `docker` コマンドが利用可能になる
+10. Ubuntu にクローンしたリポジトリ上で `code .` を実行
+11. VSCode 上で Docker が立ち上がり、仮想環境内でサーバーが起動する
+12. ブラウザで `http://127.0.0.1:8080` にアクセスして動作確認
+
+## �🔧 主な技術スタック
 
 - **言語**: Go 1.21+
 - **フレームワーク**: Gin
